@@ -19,9 +19,6 @@ spec:
 {{ toYaml .Values.podAnnotations | indent 8 }}
 {{- end }}
     spec:
-      volumes:
-      - name: shared-data
-        emptyDir: {}
       containers:
       - name: {{ .Chart.Name }}
         image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
@@ -31,14 +28,6 @@ spec:
         - name: {{ $pkey }}
           value: {{ quote $pval }}
 {{- end }}
-        resources:
-{{ toYaml .Values.resources | indent 12 }}
-        volumeMounts:
-          - name: shared-data
-            mountPath: /usr/src/app/build
-      - name: {{ .Chart.Name }}-nginx
-        image: "nginx:1.17"
-        imagePullPolicy: {{ .Values.image.pullPolicy }}
         ports:
         - containerPort: {{ .Values.service.internalPort }}
         livenessProbe:
@@ -56,8 +45,9 @@ spec:
           periodSeconds: {{ .Values.readinessProbe.periodSeconds }}
           successThreshold: {{ .Values.readinessProbe.successThreshold }}
           timeoutSeconds: {{ .Values.readinessProbe.timeoutSeconds }}
-        volumeMounts:
-          - name: shared-data
-            mountPath: /usr/share/nginx/html
+        resources:
+        command: ["npm"]
+        args: ["start"]
+{{ toYaml .Values.resources | indent 12 }}
       terminationGracePeriodSeconds: {{ .Values.terminationGracePeriodSeconds }}
 {{- end }}
