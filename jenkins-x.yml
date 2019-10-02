@@ -5,7 +5,9 @@ pipelineConfig:
       build:
         steps:
         - command: npm run build
+          name: npm-run-build
     release:
       build:
         steps:
         - command: npm run build
+          name: npm-run-build
