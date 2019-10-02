@@ -9,7 +9,7 @@ class Home extends Component {
     }
 
     async componentDidMount() {
-        let response = await axios.get('/home');
+        let response = await axios.get(this.getServiceUrl());
         this.setState({"value": response.data});
     }
 
@@ -17,6 +17,14 @@ class Home extends Component {
         return (
             <h1 id='message'>{this.state.value}</h1>
         );
+    }
+
+    getServiceUrl() {
+        let baseUrl = "/";
+        if (window.GREEN_UI_CONFIGURATION) {
+            baseUrl = "https://" + window.GREEN_UI_CONFIGURATION.apiNamespace + "/";
+        }
+        return baseUrl + "home";
     }
 
 }

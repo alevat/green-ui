@@ -5,6 +5,8 @@ pipelineConfig:
       build:
         replace: true
         steps:
+        - sh: env
+          name: display-env
         - sh: jx step credential -s npm-token -k file -f /builder/home/.npmrc --optional=true
           name: npmrc
         - sh: npm install
