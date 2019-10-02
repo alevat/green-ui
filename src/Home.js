@@ -22,7 +22,7 @@ class Home extends Component {
     getServiceUrl() {
         let baseUrl = "/";
         if (window.GREEN_UI_CONFIGURATION) {
-            baseUrl = "https://" + window.GREEN_UI_CONFIGURATION.apiNamespace + "/";
+            baseUrl = "https://green-service." + window.GREEN_UI_CONFIGURATION.apiNamespace + "/";
         }
         return baseUrl + "home";
     }
