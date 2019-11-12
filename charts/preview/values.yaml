@@ -1,5 +1,3 @@
-env:
-  JX_NAMESPACE: jx-staging
 
 expose:
   Annotations:
@@ -22,3 +20,5 @@ preview:
     repository:
     tag:
     pullPolicy: IfNotPresent
+  env:
+    JX_NAMESPACE: jx-staging
