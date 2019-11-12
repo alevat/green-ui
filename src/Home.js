@@ -10,7 +10,6 @@ class Home extends Component {
 
     async componentDidMount() {
         let response = await axios.get(this.getServiceUrl());
-        console.log(response)
         this.setState({"value": response.data});
     }
 
