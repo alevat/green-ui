@@ -9,7 +9,7 @@ image:
 
 # define environment variables here as a map of key: value
 env:
-  JX_NAMESPACE: jx-staging
+  JX_NAMESPACE:
 
 # enable this flag to use knative serve to deploy the app
 knativeDeploy: false

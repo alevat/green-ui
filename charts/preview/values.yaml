@@ -1,3 +1,5 @@
+env:
+  JX_NAMESPACE: jx-staging
 
 expose:
   Annotations:
