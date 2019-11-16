@@ -5,16 +5,19 @@ pipelineConfig:
       build:
         replace: true
         steps:
-#        - sh: jx step credential -s npm-token -k file -f /builder/home/.npmrc --optional=true
-#          name: npmrc
-#        - sh: npm install
-#          name: npm-install
-#        - sh: CI=true DISPLAY=:99 npm test
-#          name: npm-test
-#        - command: npm run build
-#          name: npm-run-build
-#        - sh: pwd && ls && Xvfb :99 & export DISPLAY=:99 && pwd && ./gradlew clean test
-        - sh: pwd && ls && Xvfb :99 & pwd && ls
+        - sh: jx step credential -s npm-token -k file -f /builder/home/.npmrc --optional=true
+          name: npmrc
+        - sh: npm install
+          name: npm-install
+        - sh: CI=true DISPLAY=:99 npm test
+          name: npm-test
+        - command: npm run build
+          name: npm-run-build
+        - sh: Xvfb :99 &
+          name: start-xvfb
+          agent:
+            image: gcr.io/alevat-k8s/green-bdd:0.0.2
+        - sh: DISPLAY=:99 ./gradlew clean test
           name: functional-test
           dir: /home/remoteuser
           agent:
