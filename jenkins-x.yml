@@ -13,7 +13,8 @@ pipelineConfig:
           name: npm-test
         - command: npm run build
           name: npm-run-build
-        - sh: pwd && Xvfb :99 & export DISPLAY=:99 && ./gradlew clean test
+#        - sh: Xvfb :99 & export DISPLAY=:99 && ./gradlew clean test
+        - sh: pwd
           name: functional-test
           dir: /home/remoteuser
           agent:
