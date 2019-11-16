@@ -13,11 +13,6 @@ pipelineConfig:
           name: npm-test
         - command: npm run build
           name: npm-run-build
-        - sh: ./run-tests.sh
-          name: functional-test
-          dir: /home/bdd
-          agent:
-            image: gcr.io/alevat-k8s/green-bdd:0.0.3
         - sh: export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml
           name: container-build
     release:
