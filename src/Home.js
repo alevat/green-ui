@@ -15,10 +15,7 @@ class Home extends Component {
 
     render() {
         return (
-            <div>
-                <h1 id='message'>{this.state.value}</h1>
-                <h2 id='bdd'>BDD</h2>
-            </div>
+            <h1 id='message'>{this.state.value}</h1>
         );
     }
 
