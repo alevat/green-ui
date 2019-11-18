@@ -17,8 +17,7 @@ pipelineConfig:
 #          name: container-build
       postBuild:  # TEMPORARY FOR TESTING - DELETE!!!
         steps:
-#          - sh: ./run-tests.sh
-          - sh: sleep 1200
+          - sh: ./run-tests.sh
             name: green-bdd-test
             dir: /home/bdd
             agent:
