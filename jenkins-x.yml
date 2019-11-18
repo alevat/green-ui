@@ -21,7 +21,7 @@ pipelineConfig:
             name: green-bdd-test
             dir: /home/bdd
             agent:
-              image: gcr.io/alevat-k8s/green-bdd:0.0.7
+              image: gcr.io/alevat-k8s/green-bdd:0.0.0-SNAPSHOT-PR-7-1
     release:
       build:
         replace: true
