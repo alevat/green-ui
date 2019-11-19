@@ -15,7 +15,7 @@ class Home extends Component {
 
     render() {
         return (
-            <h1 id='message'>Not {this.state.value}</h1>
+            <h1 id='message'>{this.state.value}</h1>
         );
     }
 
