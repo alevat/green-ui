@@ -15,6 +15,13 @@ pipelineConfig:
           name: npm-run-build
         - sh: export VERSION=$PREVIEW_VERSION && skaffold build -f skaffold.yaml
           name: container-build
+      postBuild:  # TEMPORARY FOR TESTING - DELETE!!!
+        steps:
+          - sh: ./run-tests.sh
+            name: green-bdd-test
+            dir: /home/bdd
+            agent:
+              image: gcr.io/alevat-k8s/green-bdd:0.0.8
     release:
       build:
         replace: true
